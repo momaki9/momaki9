@@ -2,7 +2,7 @@
 .	 I am currently a Chemistry QC specialist at ALEKS corporation, where I help support the development of online chemistry homework as well as support the chemistry adaptive learning and assessment platform (ALEKS).
 - 👀 I’m interested in education, learning new skills, and soccer ![soccer-player (1)](https://user-images.githubusercontent.com/104048816/165821110-e660e2e7-79d2-4182-9626-e914ca96a3fd.png)
 
-- 🌱 I’m currently learning how to code at the UCI Coding Bootcamp!
+-  🌱 I’m currently learning how to code at the UCI Coding Bootcamp!
 - 📫 Best way to reach me is by email (mostafa_m9@yahoo.com)
 
 <!---
