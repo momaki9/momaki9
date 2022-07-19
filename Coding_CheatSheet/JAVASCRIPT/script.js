@@ -126,7 +126,7 @@ else {
 //Helps to excute a block of code more than once >>> sample for-loop
 //iterator + conditional statement if evalautes to true then execute the code otherwise exit the loop, i++ means to increment untill we reach the end
 
-for (var i = 0; i < 5; i++) {
+ {
     console.log(`This is the current value of i: ${i}.`)
 }
 //this also applies to data inside an array; it is best to use .length
