@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web APIs</title>
+    <link rel="stylesheet" href="./css/style.css" />   
+</head>
+<body>
+    <header>
+        <h1>Learn Web APIs The E-Z Way!</h1>
+    </header>
+    <main>
+        <div>
+        <h2>Concept 1: <span>Document Object Model</span></h2>
+        <br>
+        <h3>document.body.children</h3>
+        <p>This will display the child elements inside the body. Those elements will be organized as an array.</p>
+        <p><code>Test it out with: console.log(document.body.children)</code></p>
+        <p>Index values can also be used as well as nesting the child of a child element. See example below.</p>
+        <p><code>Child with index value of 1: console.log(document.body.children[1])</code></p>
+        <p><code>First <i>gran</i>child of a the second child(<i>parent</i>) of the body element(<i>grandparent</i>): console.log(document.body.children[1].children[0])</code></p>
+        </div>
+        <br>
+        <div>
+            <h2>Concept 2: Built-in Methods</h2>
+            <br>
+            <h3>getElementById</h3>
+            <p>Associates an HTML element by it's ID with a variable (firstChild)</p>
+            <p><code>var firstChild = document.getElementById("first-child");</code></p>
+            <p>Subsequently, the variable associated with the HTML element can be styled using javascript as follows:</p>
+            <p><code>firstChild.style.color = "red"</code></p>
+            <p>Similarly, this could be applied to child elements within the HTML that is associated with a variable. In the example below, we are changing the style (font size) of the first child of the selected element.</p>
+            <p><code>var articlesDiv = document.getElementById('articles'); articlesDiv.children[0].style.fontSize = '50px';</code></p>
+            <br>
+            <h3>.querySelector, .querySelectorAll, and .setAttribute</h3>
+            <P>You can access multiple elements using .querySelectorAll(), whereas .querySelector can be used to select an element by ID or by using it's class. If selecting for ID, be sure to use the # before the ID. If selecting a class, a . is used (similar to CSS selectors).</P>
+            <p>.setAttribute is used with the variable to change its style. The syntax used is similar to how style is coded in CSS. See example below.</p>
+            <p><code>var divTags = document.querySelectorAll("div");</code></p>
+            <p><code>var pTags = document.querySelectorAll("p");</code></p>
+            <p><code>var imgEl = document.querySelectorAll("img");</code></p>
+            <p>Acess element using it's ID: <code>var changeP = document.querySelector("#change2");</code></p>
+            <p>This sets first pTags to have a font-size of 40px: <code>pTags[0].setAttribute("style", "font-size: 40px;");</code></p>
+            <p>Sets changeP to have multiple style attributes: <code>changeP.setAttribute("style", "font-size: 25px; font-weight: bold; text-decoration:underline; ");</code></p>
+            <p>Sets image source of the first image: <code>imgEl[0].setAttribute("src", "./assets/images/image_1.png");</code></p>
+            <p>Adds size and width styling to image: <code>imgEl[0].setAttribute("style", "width:50%");</code></p>
+            <p>Loops through divTags to set each one to have the color blue and the font size of 30px: <code>for (var i = 0; i &lt; divTags.length; i++) {</code></p>
+            <p><code>[i].setAttribute("style", "color:blue; font-size: 30px");}</code></p>
+            <br>
+            <h3>.textContent</h3>
+            <p>This can be used to input text within an HTML element. Note that .querySelector is used here with a class (<i>.sites</i>).</p>
+            <p><code>var sitesEl = document.querySelector(".sites");</code></p>
+            <p><code>site1El.children[0].textContent = "Site 1";</code></p>
+            <p>Reminder, the specific child element can be selected. In this case, .setAttribute is used to provide the URL:</p>
+            <p><code>site1El.children[1].setAttribute("href", "https://google.com");</code></p>
+        </div>
+        <br>
+        <div>
+            <h3>.appendChild and .createElement</h3>
+            <p>New elements can be created with default styling using .createElement.</p>
+            <p><code>var tagName = prompt("Please enter an HTML Tag (ex. h1, h2, p, div):", "enter tag");</code></p>
+            <p><code>var tag = document.createElement(tagName);</code></p>
+            <p>Subsequently, .textContent can be used to define the text inside the element created.</p>
+            <p><code>tag.textContent = "This was made via a prompt. It's a " + tagName + " .";</code></p>
+            <p>Finally, append child actually outputs the text + element in the 'parent' element as specified (body in this example)</p>
+            <p><code>document.body.appendChild(tag);</code></p>
+        </div>
+        <br>
+        <div>
+            <h3>setInterval() and clearInterval()</h3>
+            <p>The setInterval() method, repeatedly calls a function or exectures a block of code with a fixed time delay between each call. This method returns an interval ID which uniquely identifies the interval, so you can remove it later by calling clearInterval(). </p>
+            <p>The example below displays a timer counting down from 10 seconds and after that an image would be displayed:</p>
+            <p>
+                <p>Selects element by class</p>
+                <code>var timeEl = document.querySelector(".time");</code> <br>
+                <p>Selects element by id</p>
+                <code>var mainEl = document.getElementById("main");</code> <br>
+                <code>var secondsLeft = 10;</code> <br>
+                <p>Function to create and append colorsplosion image</p>
+                <code>var timeInterval = setInterval(function() {</code> <br>
+                <code>secondsLeft--</code> <br>
+                <code>timeEl.textContent = secondsLeft + " seconds left till colorsplosion!";</code> <br>
+                <code>if (secondsLeft === 0) {</code> <br>
+                <code>clearInterval(timeInterval);</code> <br>
+                <code>sendMessage(); }</code> <br>
+                <code>}, 1000);</code> <br>
+                
+                <code>function sendMessage() {</code> <br>
+                <code>timeEl.textContent = " ";</code> <br>
+                <code>var imgEl = document.createElement("img");</code> <br>
+                <code> imgEl.setAttribute("src", "images/image_1.jpg");</code> <br>
+                <code>mainEl.appendChild(imgEl);}</code> <br>
+                <code></code> <br>
+            </p>
+        </div>
+        <br>
+        <div>
+            <h2>Concept 3: Event Listener</h2>
+            <br>
+            <h3>.addEventListener</h3>
+            <p>The .addEventListener method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.</p>
+            <p>Common targets are Element, or its children, Document, and Window, but the target may be any object that supports events.</p>
+            <p>In the example below, the function would be triggered by the event of a click. Syntax:</p>
+            <code>variable.addEventListener("click", function () {} )</code>
+            <p></p>
+        </div>
+        <br>
+        <div>
+            <h2>Concept 4: Preventing Default Behavior</h2>
+            <br>
+            <h3>.preventDefault()</h3>
+            <p>The preventDefault() method of the Event interface tells the user agent that if the event does not get explicitly handled, its default action should not be taken as it normally would be. </p>
+            <p>The event continues to propagate as usual, unless one of its event listeners calls stopPropagation() or stopImmediatePropagation(), either of which terminates propagation at once.</p>
+            <p>Syntax:</p>
+            <code>function functionName(event) {</code>
+            <code> event.preventDefault(); }</code>
+        </div>
+        <br>
+        <div>
+            <h2>Concept 5: Keyboard Events</h2>
+            <br>
+        </div>
+        <br>
+        <div>
+            <h2>Concept 6: Event Bubbling</h2>
+            <br>
+            <h3>.stopPropagation()</h3>
+            <code>event.stopPropagation();</code>
+        </div>
+    </main>
+    <script src="./js/script.js"></script>    
+</body>
+</html>
